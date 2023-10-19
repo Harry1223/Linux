@@ -22,7 +22,6 @@ ntw_dns=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')
 
 #collection informstion about interface
 
-net_interface=$(ip -o -4 route show to default | awk '{print $5}')
 ntw_interfaces=$(ip -o link show | awk -F': ' '{print $2}')
 ntw_make_model=$(lspci | grep -i 'network' | awk -F': ' '{print $2}')
 ntw_ip_cidr=$(ip -o -4 addr show $net_interface | awk '/inet / {print $4}')
